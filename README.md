@@ -1,10 +1,10 @@
 # Financial Data Lakehouse Pipeline
 
-## 📋 Mô tả dự án
+##  Mô tả dự án
 
 Hệ thống tự động thu thập, lưu trữ và phân tích dữ liệu từ các nguồn API tài chính để phân tích mối tương quan giữa tin tức (Sentiment) và biến động giá cổ phiếu.
 
-## 🏗️ Kiến trúc hệ thống
+##  Kiến trúc hệ thống
 
 ```
 ┌─────────────────┐
@@ -47,7 +47,7 @@ Hệ thống tự động thu thập, lưu trữ và phân tích dữ liệu t�
 Apache Airflow điều phối toàn bộ pipeline
 ```
 
-## 🚀 Công nghệ sử dụng
+##  Công nghệ sử dụng
 
 - **Python 3.9+**: Ngôn ngữ lập trình chính
 - **Apache Airflow 2.7+**: Orchestration và scheduling
@@ -57,7 +57,7 @@ Apache Airflow điều phối toàn bộ pipeline
 - **PostgreSQL 15+**: Analytical database
 - **Docker & Docker Compose**: Containerization
 
-## 📁 Cấu trúc dự án
+##  Cấu trúc dự án
 
 ```
 Financial-Data-Lakehouse-Pipeline/
@@ -96,7 +96,7 @@ Financial-Data-Lakehouse-Pipeline/
 └── README.md
 ```
 
-## 🔧 Cài đặt và Chạy
+##  Cài đặt và Chạy
 
 ### Yêu cầu hệ thống
 
@@ -132,7 +132,7 @@ docker-compose ps
 - **Hadoop NameNode UI**: http://localhost:9870
 - **Hive Server**: localhost:10000
 
-## 📊 Data Flow
+##  Data Flow
 
 ### 1. Extraction (Python)
 ```python
@@ -173,7 +173,7 @@ docker-compose ps
 -- Create views cho reporting
 ```
 
-## 📚 API Data Sources
+##  API Data Sources
 
 ### Polygon.io
 - **Endpoint**: Stock aggregates, trades, quotes
@@ -190,7 +190,7 @@ docker-compose ps
 - **Frequency**: As filed
 - **Data**: 10-K, 10-Q, 8-K filings
 
-## 🔄 Airflow Pipeline Schedule
+##  Airflow Pipeline Schedule
 
 ```python
 # Main pipeline: Chạy hàng ngày lúc 6:00 AM
@@ -210,7 +210,7 @@ Tasks:
 10. data_quality_check
 ```
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Chạy unit tests
@@ -278,29 +278,3 @@ spark.executor.memory=4g
 spark.driver.memory=2g
 ```
 
-## 📖 Tài liệu tham khảo
-
-- [Apache Airflow Docs](https://airflow.apache.org/docs/)
-- [Apache Spark Docs](https://spark.apache.org/docs/latest/)
-- [Hadoop HDFS Docs](https://hadoop.apache.org/docs/stable/)
-- [Apache Hive Docs](https://hive.apache.org/)
-
-## 🤝 Contributing
-
-Dự án này là để học tập. Bạn có thể:
-1. Fork project
-2. Thêm features mới
-3. Improve performance
-4. Fix bugs
-
-## 📝 License
-
-MIT License - Free to use for learning purposes
-
-## 👤 Author
-
-Dự án thực hành Big Data & Data Engineering
-
----
-
-**Happy Learning! 🚀**
