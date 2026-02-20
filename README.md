@@ -223,14 +223,14 @@ python dags/financial_data_pipeline.py
 spark-submit scripts/spark_jobs/data_cleaning.py
 ```
 
-## 📈 Monitoring và Logging
+##  Monitoring và Logging
 
 - **Airflow Logs**: Xem trong UI hoặc `/logs` directory
 - **Spark Logs**: Xem trong Spark UI
 - **HDFS Health**: Hadoop NameNode UI
 - **Database Metrics**: PostgreSQL queries
 
-## 🎓 Kiến thức học được
+##  Kiến thức học được
 
 ### 1. Big Data Architecture
 - Thiết kế Data Lake với HDFS
@@ -257,7 +257,7 @@ spark-submit scripts/spark_jobs/data_cleaning.py
 - Service networking
 - Volume management
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### HDFS không start được
 ```bash
