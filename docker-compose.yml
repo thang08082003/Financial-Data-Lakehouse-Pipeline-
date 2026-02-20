@@ -111,45 +111,45 @@ services:
     networks:
       - financial_network
 
-  # Spark Master
-  spark-master:
-    image: bitnami/spark:3.4.1
-    container_name: financial-spark-master
-    environment:
-      SPARK_MODE: master
-      SPARK_RPC_AUTHENTICATION_ENABLED: no
-      SPARK_RPC_ENCRYPTION_ENABLED: no
-      SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED: no
-      SPARK_SSL_ENABLED: no
-      SPARK_MASTER_OPTS: "-Dspark.deploy.defaultCores=2"
-    volumes:
-      - ./scripts/spark_jobs:/opt/spark-jobs
-      - ./config/spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
-    ports:
-      - "8081:8080"  # Spark Master Web UI
-      - "7077:7077"  # Spark Master
-    networks:
-      - financial_network
+  # Spark Master - COMMENTED OUT: Image not available, will setup later
+  # spark-master:
+  #   image: bitnami/spark:latest
+  #   container_name: financial-spark-master
+  #   environment:
+  #     SPARK_MODE: master
+  #     SPARK_RPC_AUTHENTICATION_ENABLED: no
+  #     SPARK_RPC_ENCRYPTION_ENABLED: no
+  #     SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED: no
+  #     SPARK_SSL_ENABLED: no
+  #     SPARK_MASTER_OPTS: "-Dspark.deploy.defaultCores=2"
+  #   volumes:
+  #     - ./scripts/spark_jobs:/opt/spark-jobs
+  #     - ./config/spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+  #   ports:
+  #     - "8081:8080"  # Spark Master Web UI
+  #     - "7077:7077"  # Spark Master
+  #   networks:
+  #     - financial_network
 
-  # Spark Worker
-  spark-worker:
-    image: bitnami/spark:3.4.1
-    container_name: financial-spark-worker
-    environment:
-      SPARK_MODE: worker
-      SPARK_MASTER_URL: spark://spark-master:7077
-      SPARK_WORKER_MEMORY: 4G
-      SPARK_WORKER_CORES: 2
-      SPARK_RPC_AUTHENTICATION_ENABLED: no
-      SPARK_RPC_ENCRYPTION_ENABLED: no
-      SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED: no
-      SPARK_SSL_ENABLED: no
-    volumes:
-      - ./scripts/spark_jobs:/opt/spark-jobs
-    depends_on:
-      - spark-master
-    networks:
-      - financial_network
+  # Spark Worker - COMMENTED OUT: Image not available, will setup later
+  # spark-worker:
+  #   image: bitnami/spark:latest
+  #   container_name: financial-spark-worker
+  #   environment:
+  #     SPARK_MODE: worker
+  #     SPARK_MASTER_URL: spark://spark-master:7077
+  #     SPARK_WORKER_MEMORY: 4G
+  #     SPARK_WORKER_CORES: 2
+  #     SPARK_RPC_AUTHENTICATION_ENABLED: no
+  #     SPARK_RPC_ENCRYPTION_ENABLED: no
+  #     SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED: no
+  #     SPARK_SSL_ENABLED: no
+  #   volumes:
+  #     - ./scripts/spark_jobs:/opt/spark-jobs
+  #   depends_on:
+  #     - spark-master
+  #   networks:
+  #     - financial_network
 
   # Airflow Webserver
   airflow-webserver:

@@ -280,34 +280,34 @@ CREATE OR REPLACE FUNCTION financial_analytics.populate_date_dimension(
     end_date DATE
 ) RETURNS VOID AS $$
 DECLARE
-    current_date DATE := start_date;
+    curr_date DATE := start_date;
 BEGIN
-    WHILE current_date <= end_date LOOP
+    WHILE curr_date <= end_date LOOP
         INSERT INTO financial_analytics.dim_date (
             date, year, quarter, month, week, day, day_of_week, day_name, is_weekend
         )
         VALUES (
-            current_date,
-            EXTRACT(YEAR FROM current_date),
-            EXTRACT(QUARTER FROM current_date),
-            EXTRACT(MONTH FROM current_date),
-            EXTRACT(WEEK FROM current_date),
-            EXTRACT(DAY FROM current_date),
-            EXTRACT(DOW FROM current_date),
-            TO_CHAR(current_date, 'Day'),
-            EXTRACT(DOW FROM current_date) IN (0, 6)
+            curr_date,
+            EXTRACT(YEAR FROM curr_date),
+            EXTRACT(QUARTER FROM curr_date),
+            EXTRACT(MONTH FROM curr_date),
+            EXTRACT(WEEK FROM curr_date),
+            EXTRACT(DAY FROM curr_date),
+            EXTRACT(DOW FROM curr_date),
+            TO_CHAR(curr_date, 'Day'),
+            EXTRACT(DOW FROM curr_date) IN (0, 6)
         )
         ON CONFLICT (date) DO NOTHING;
         
-        current_date := current_date + INTERVAL '1 day';
+        curr_date := curr_date + INTERVAL '1 day';
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
 
 -- Populate date dimension for 5 years
 SELECT financial_analytics.populate_date_dimension(
-    CURRENT_DATE - INTERVAL '2 years',
-    CURRENT_DATE + INTERVAL '3 years'
+    (CURRENT_DATE - INTERVAL '2 years')::DATE,
+    (CURRENT_DATE + INTERVAL '3 years')::DATE
 );
 
 -- =========================================
